@@ -1,8 +1,7 @@
-
 import React, { useState } from "react";
 
 const UpdateHome = () => {
-  // Separate states for each section
+  
   const [secondaryTab, setSecondaryTab] = useState("formIV");
   const [primaryTab, setPrimaryTab] = useState("stdVII");
   const [examSeriesTab, setExamSeriesTab] = useState("formIII");
@@ -88,14 +87,11 @@ const UpdateHome = () => {
   };
 
   const toggleDropdown = (setDropdownState, dropdownState, subject) => {
-    const newState = Object.keys(dropdownState).reduce((acc, key) => {
-      acc[key] = key === subject ? !dropdownState[key] : false; 
-      return acc;
-    }, {});
-  
-    setDropdownState(newState);
+    setDropdownState((prev) => ({
+      ...prev,
+      [subject]: !dropdownState[subject],
+    }));
   };
-  
 
   return (
     <div className="p-4 bg-gray-100 min-h-screen">
@@ -427,3 +423,6 @@ const UpdateHome = () => {
 };
 
 export default UpdateHome;
+
+
+
